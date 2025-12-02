@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* BACKGROUND IMAGE */
+body {
+    font-family: "Ibarra Real Nova", serif;
+
+    background-image: url("images/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MAIN CONTAINER */
+.viewport {
+    width: 1200px;
+    height: 750px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TITLE */
+.site-header h1 {
+    text-align: center;
+    font-family: "Kapakana", cursive;
+    font-size: 50px;
+    color: white;
+    margin-top: 10px;
+    letter-spacing: 1px;
+}
+
+/* MAIN LAYOUT */
+.main-frame {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+/* RESTAURANT GRID */
+.restaurants {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 40px;
+}
+
+/* EACH RESTAURANT COLUMN */
+.restaurant {
+    width: 33%;
+    text-align: center;
+}
+
+/* CITY NAME */
+.city-name {
+    font-size: 34px;
+    color: white;
+    margin-bottom: 6px;
+}
+
+/* RESTAURANT NAME (subtitle) */
+.city-subtitle {
+    font-size: 18px;
+    font-style: italic;
+    color: white;
+    margin-bottom: 18px;
+}
+
+/* FOOD IMAGE HOLDER */
+.plate {
+    width: 360px;
+    height: 360px;
+    margin: 0 auto;
+
+    overflow: hidden;
+    transition: 0.3s ease;
+}
+
+.plate img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* BASE CLASS FOR INDIVIDUAL IMAGE TWEAKS */
+.food-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* FIX size differences due to transparency in each PNG */
+.hk-img {
+    transform: scale(0.88);
+}
+
+.egg-img {
+    transform: scale(1.05);
+}
+
+.nobu-img {
+    transform: scale(1.10);
+}
+
+.plate:hover {
+    transform: scale(1.08);
+}
+
+/* FOOTER */
+.site-footer {
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    padding-top: 10px;
+}
