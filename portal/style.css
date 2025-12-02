@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    color: white;
+  }
+  
+  /* Banner */
+  .banner {
+    position: relative;
+    height: 300px;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  /* All headings */
+  h1 {
+    font-size: 40px;
+    margin: 5px 0;
+    font-weight: 600;
+  }
+  
+  /* Special words */
+  .alt-font {
+    font-family: 'Crimson Pro', serif;
+    font-style: italic;
+  }
+  
+  /* Rectangles */
+  .rect {
+    position: absolute;
+    width: 200px;
+    height: auto;
+  }
+  
+  .rect1 {
+    top: 40px;
+    left: 50px;
+  }
+  
+  .rect2 {
+    bottom: 40px;
+    right: 50px;
+  }
+  
+  /* Flowers */
+  .flower {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    animation: rotate 8s linear infinite;
+  }
+  
+  .flower1 {
+    top: 20px;
+    right: 100px;
+  }
+  
+  .flower2 {
+    bottom: 20px;
+    left: 100px;
+  }
+
+  /* Scroll Content */
+.scroll-strip {
+    overflow: hidden;
+    white-space: nowrap;
+    background: white;
+    color: black;
+}
+
+.scroll-content {
+    display: inline-block;
+    animation: scroll-left 15s linear infinite paused;
+}
+
+.scroll-content p {
+    display: inline-block;
+    margin: 0 40px;
+    font-size: 32px;
+    font-weight: bold; /* or choose a bold font */
+}
+
+.scroll-content img {
+    height: 30px;
+    vertical-align: middle;
+}
+
+/* Projects section */
+.projects-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 20px;
+  width: 100%;
+  padding: 40px 20px;
+  background-color: black;
+  box-sizing: border-box;
+}
+
+/* Each column */
+.proj-col {
+  flex: 1 1 220px;
+  padding: 20px;
+  border-radius: 10px;
+  color: black;
+}
+
+.proj-col h2 {
+  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* List reset and links */
+.proj-col ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.proj-col li {
+  margin-bottom: 10px;
+}
+
+.proj-col a {
+  color: black;
+  text-decoration: none;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+}
+
+.proj-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-section {
+    background-color: white;
+    color: black;
+    padding: 40px 20px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.footer-section .thanks {
+    font-size: 32px;
+    margin: 0 0 16px 0;
+}
+
+.footer-lines {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-name .footer-contact {
+    margin: 0;
+    font-size: 18px;
+}
+
+.contact-link {
+    color: black;
+    text-decoration: underline;
+}
+
+.contact-link:hover {
+    opacity: 0.7;
+}
+
+/* Individual colors */
+.p1 { background-color: #FF9704; }
+.p2 { background-color: #AD8AFF; }
+.p3 { background-color: #AEF243; }
+.p4 { background-color: #FF6569; }
+
+
+/* Rotate animation */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}  
+
+/* Scroll animation */
+@keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translate(100%); }
+}
+
+/* Start moving when hovered */
+.scroll-strip:hover .scroll-content {
+    animation-play-state: running;
+}
+
+/* absolute positioning 
+0% {
+  right: 0%;
+}
+
+100% {
+  right: 100%;
+} */
+/* set to infinite forward */
