@@ -58,6 +58,10 @@ body {
 .restaurant {
     width: 33%;
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* CITY NAME */
@@ -80,7 +84,6 @@ body {
     width: 360px;
     height: 360px;
     margin: 0 auto;
-
     overflow: hidden;
     transition: 0.3s ease;
 }
@@ -108,7 +111,7 @@ body {
 }
 
 .nobu-img {
-    transform: scale(1.10);
+    transform: scale(1.20);
 }
 
 .plate:hover {
