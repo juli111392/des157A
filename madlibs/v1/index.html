@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft MadLibs</title>
+
+    <!-- Normalize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <!-- Pixel Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main>
+        <!-- START SCREEN -->
+         <section id="start-screen">
+            <!-- Background -->
+             <img src="images/background-1.png" alt="Minecraft background" class="bg">
+
+            <!-- Title -->
+            <div class="title-wrapper">
+                <h1 class="main-title">WHAT MOB ARE YOU?</h1>
+                <h2 class="sub-title">MadLibs!</h2>
+            </div>
+
+            <!-- Start button -->
+             <button id="start-btn">Start</button>
+         </section>
+
+        <!-- FORM SCREEN -->
+         <section id="form-screen">
+            <!-- Background -->
+            <img src="images/background-2.png" alt="form background" class="bg">
+
+             <!-- Outer light frame -->
+            <div class="form-frame">
+
+            <!-- Dark inner panel -->
+            <article class="form-panel">
+                <h2 class="form-title">WHAT MOB ARE YOU?</h2>
+
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+    
+                    <label for="adj">Adjective:</label>
+                    <input type="text" id="adj" required>
+    
+                    <label for="color">Color:</label>
+                    <input type="text" id="color" required>
+    
+                    <label for="item">Item/block:</label>
+                    <input type="text" id="item" required>
+    
+                    <label for="tool">Tool:</label>
+                    <input type="text" id="tool" required>
+    
+                    <input type="submit" value="Submit" id="submit-btn">
+                </form>
+            </article>
+            </div>    
+         </section>
+
+        <!-- FINAL SCREEN -->
+            <section id="final-screen">
+                <img src="images/background-3.png" class="bg" alt="Minecraft background">
+
+                <div class="final-box">
+
+                    <p>
+                        Deep in the Minecraft world, 
+                        <b id="name-out" class="name-color"></b>
+                        woke up feeling especially 
+                        <b id="adj-out" class="adj-color"></b> today.
+                        The sky glowed a strange 
+                        <b id="color-out" class="color-color"></b> shade,
+                        which was definitely not normal.
+                    </p>
+
+                    <p>
+                        While exploring, 
+                        <b id="name-out-2" class="name-color"></b> 
+                        tripped over a mysterious 
+                        <b id="item-out" class="item-color"></b>
+                        lying on the ground.  
+                        Obviously, this was a sign of *immediate chaos*.
+                    </p>
+
+                    <p>
+                        Without thinking, they pulled out their trusty 
+                        <b id="tool-out" class="tool-color"></b> —
+                        because nothing solves problems faster than violently swinging something.
+                    </p>
+
+                    <p>
+                        Moments later, a Creeper appeared… but instead of exploding,
+                        it politely asked if 
+                        <b id="name-out-3" class="name-color"></b>
+                        could help it file its taxes.
+                    </p>
+
+                    <p>
+                        And that’s how 
+                        <b id="name-out-4" class="name-color"></b>
+                        became the first official accountant of the Creeper Kingdom.
+                    </p>
+
+                </div>
+            </section>
+    </main>
+
+</body>
+</html>
