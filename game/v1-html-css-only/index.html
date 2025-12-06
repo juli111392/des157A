@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Sushi</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- INTRO SCREEN -->
+    <section id="intro-screen" class="screen">
+        <div class="screen-content">
+            <h1 class="game-title">Cat Sushi</h1>
+            <button class="game-button">Start Now</button>
+        </div>
+    </section>
+
+    <!-- PLAYER 1 SCREEN -->
+    <section id="player1-screen" class="screen hidden">
+        <div class="screen-content">
+            <h2 class="player-title">Player 1</h2>
+            
+            <div class="score-display">
+                <p class="score-label">Score: <span id="player1-score">0</span></p>
+            </div>
+
+            <div class="dice-container">
+                <img id="dice" class="dice-image" src="images/dice-1.png" alt="Dice">
+            </div>
+
+            <div class="button-group">
+                <button class="game-button" id="roll-dice-p1">Roll Dice</button>
+                <button class="game-button secondary" id="pass-turn-p1">Pass Turn</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLAYER 2 SCREEN -->
+    <section id="player2-screen" class="screen hidden">
+        <div class="screen-content">
+            <h2 class="player-title">Player 2</h2>
+            
+            <div class="score-display">
+                <p class="score-label">Score: <span id="player2-score">0</span></p>
+            </div>
+
+            <div class="dice-container">
+                <img id="dice2" class="dice-image" src="images/dice-1.png" alt="Dice">
+            </div>
+
+            <div class="button-group">
+                <button class="game-button" id="roll-dice-p2">Roll Dice</button>
+                <button class="game-button secondary" id="pass-turn-p2">Pass Turn</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- WINNER SCREEN -->
+    <section id="winner-screen" class="screen hidden">
+        <div class="screen-content">
+            <h1 class="winner-title" id="winner-text">Player 1 Has Won!</h1>
+            <button class="game-button" id="play-again">Play Again</button>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
