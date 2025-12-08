@@ -1,168 +1,187 @@
-// ===== GAME STATE =====
 let currentPlayer = 1;
-let player1Score = 0;
-let player2Score = 0;
+let player1Total = 0;
+let player2Total = 0;
+let isRolling = false;
 const winningScore = 20;
 
-// ===== GET SCREEN ELEMENTS =====
-const introScreen = document.getElementById('intro-screen');
-const player1Screen = document.getElementById('player1-screen');
-const player2Screen = document.getElementById('player2-screen');
-const winnerScreen = document.getElementById('winner-screen');
-
-// ===== GET BUTTON ELEMENTS =====
-const startButton = document.querySelector('#intro-screen .game-button');
-const rollDiceP1 = document.getElementById('roll-dice-p1');
-const passTurnP1 = document.getElementById('pass-turn-p1');
-const rollDiceP2 = document.getElementById('roll-dice-p2');
-const passTurnP2 = document.getElementById('pass-turn-p2');
-const playAgainButton = document.getElementById('play-again');
-
-// ===== GET DICE AND SCORE ELEMENTS =====
-const diceP1 = document.getElementById('dice');
-const diceP2 = document.getElementById('dice2');
-const player1ScoreDisplay = document.getElementById('player1-score');
-const player2ScoreDisplay = document.getElementById('player2-score');
-const winnerText = document.getElementById('winner-text');
-
-// ===== HELPER FUNCTIONS =====
-
-// Hide all screens
-function hideAllScreens() {
-    introScreen.classList.add('hidden');
-    player1Screen.classList.add('hidden');
-    player2Screen.classList.add('hidden');
-    winnerScreen.classList.add('hidden');
-}
-
-// Show specific screen
-function showScreen(screen) {
+function startGame() {
     hideAllScreens();
-    screen.classList.remove('hidden');
+    document.getElementById('player1Screen').classList.add('active');
+    currentPlayer = 1;
+    player1Total = 0;
+    player2Total = 0;
+    isRolling = false;
+    updateScores();
+    
+    // Enable Player 1 buttons
+    document.getElementById('roll1').disabled = false;
+    document.getElementById('pass1').disabled = false;
 }
 
-// Roll dice and return random number 1-6
-function rollDice() {
-    return Math.floor(Math.random() * 6) + 1;
+function hideAllScreens() {
+    document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+    });
 }
 
-// Update dice image
-function updateDiceImage(diceElement, number) {
-    diceElement.src = `images/dice-${number}.png`;
+function rollDice(player) {
+    if (isRolling || player !== currentPlayer) return;
+    
+    isRolling = true;
+    const diceElement = document.getElementById(`dice${player}`);
+    const rollButton = document.getElementById(`roll${player}`);
+    const passButton = document.getElementById(`pass${player}`);
+    
+    rollButton.disabled = true;
+    passButton.disabled = true;
+    diceElement.classList.add('rolling');
+
+    let rollCount = 0;
+    const rollInterval = setInterval(() => {
+        const randomDice = Math.floor(Math.random() * 6) + 1;
+        diceElement.src = `images/dice-${randomDice}.png`;
+        rollCount++;
+        
+        if (rollCount >= 10) {
+            clearInterval(rollInterval);
+            const finalRoll = Math.floor(Math.random() * 6) + 1;
+            diceElement.src = `images/dice-${finalRoll}.png`;
+            diceElement.classList.remove('rolling');
+            
+            if (finalRoll === 1) {
+                // Rolled a 1 (no sushi) - LOSE ALL POINTS and pass to next player
+                if (currentPlayer === 1) {
+                    player1Total = 0;
+                } else {
+                    player2Total = 0;
+                }
+                updateScores();
+                
+                // Show "No Sushi" popup
+                showNoSushiPopup();
+                
+                setTimeout(() => {
+                    switchPlayer();
+                    isRolling = false;
+                }, 2500);
+            } else {
+                // Add points directly to score
+                if (currentPlayer === 1) {
+                    player1Total += finalRoll;
+                } else {
+                    player2Total += finalRoll;
+                }
+                updateScores();
+                
+                // Check if player won
+                if (checkWinner()) {
+                    isRolling = false;
+                    return;
+                }
+                
+                rollButton.disabled = false;
+                passButton.disabled = false;
+                isRolling = false;
+            }
+        }
+    }, 100);
 }
 
-// Update score display
-function updateScoreDisplays() {
-    player1ScoreDisplay.textContent = player1Score;
-    player2ScoreDisplay.textContent = player2Score;
+function passTurn(player) {
+    if (player !== currentPlayer) return;
+    
+    // Just switch to the other player
+    switchPlayer();
 }
 
-// Check if there's a winner
+function switchPlayer() {
+    currentPlayer = currentPlayer === 1 ? 2 : 1;
+    
+    hideAllScreens();
+    document.getElementById(`player${currentPlayer}Screen`).classList.add('active');
+    
+    const rollButton = document.getElementById(`roll${currentPlayer}`);
+    const passButton = document.getElementById(`pass${currentPlayer}`);
+    rollButton.disabled = false;
+    passButton.disabled = false;
+}
+
+function updateScores() {
+    // Update all score displays
+    document.getElementById('player1ScoreDisplay').textContent = player1Total;
+    document.getElementById('player2ScoreDisplay1').textContent = player2Total;
+    document.getElementById('player1ScoreDisplay2').textContent = player1Total;
+    document.getElementById('player2ScoreDisplay').textContent = player2Total;
+}
+
 function checkWinner() {
-    if (player1Score >= winningScore) {
-        winnerText.textContent = 'Player 1 Has Won!';
-        showScreen(winnerScreen);
+    if (player1Total >= winningScore) {
+        setTimeout(() => showWinner(1), 500);
         return true;
-    } else if (player2Score >= winningScore) {
-        winnerText.textContent = 'Player 2 Has Won!';
-        showScreen(winnerScreen);
+    } else if (player2Total >= winningScore) {
+        setTimeout(() => showWinner(2), 500);
         return true;
     }
     return false;
 }
 
-// Switch to next player
-function switchPlayer() {
-    if (currentPlayer === 1) {
-        currentPlayer = 2;
-        showScreen(player2Screen);
-    } else {
-        currentPlayer = 1;
-        showScreen(player1Screen);
-    }
+function showWinner(player) {
+    hideAllScreens();
+    document.getElementById(`winner${player}Screen`).classList.add('active');
 }
 
-// Reset game
-function resetGame() {
-    player1Score = 0;
-    player2Score = 0;
+function restartGame() {
+    hideAllScreens();
+    document.getElementById('startScreen').classList.add('active');
+    player1Total = 0;
+    player2Total = 0;
     currentPlayer = 1;
-    updateScoreDisplays();
-    updateDiceImage(diceP1, 1);
-    updateDiceImage(diceP2, 1);
-    showScreen(introScreen);
+    isRolling = false;
+    updateScores();
 }
 
-// ===== GAME LOGIC =====
+// Popup Functions
+function showNoSushiPopup() {
+    const popup = document.getElementById('noSushiPopup');
+    popup.classList.add('active');
+    setTimeout(() => {
+        popup.classList.remove('active');
+    }, 2000);
+}
 
-// Start game
-startButton.addEventListener('click', () => {
-    showScreen(player1Screen);
-    updateScoreDisplays();
-});
+function showHowToPlay() {
+    document.getElementById('howToPlayPopup').classList.add('active');
+}
 
-// Player 1 - Roll Dice
-rollDiceP1.addEventListener('click', () => {
-    const diceValue = rollDice();
-    updateDiceImage(diceP1, diceValue);
+function closeHowToPlay() {
+    document.getElementById('howToPlayPopup').classList.remove('active');
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Start button
+    document.getElementById('startButton').addEventListener('click', startGame);
     
-    if (diceValue === 1) {
-        // Rolled a 1, lose turn automatically
-        setTimeout(() => {
-            alert('Oh no! You rolled a 1. Your turn is over!');
-            switchPlayer();
-        }, 300);
-    } else {
-        // Add to score
-        player1Score += diceValue;
-        updateScoreDisplays();
-        
-        // Check for winner
-        if (checkWinner()) {
-            return;
-        }
-    }
-});
-
-// Player 1 - Pass Turn
-passTurnP1.addEventListener('click', () => {
-    switchPlayer();
-});
-
-// Player 2 - Roll Dice
-rollDiceP2.addEventListener('click', () => {
-    const diceValue = rollDice();
-    updateDiceImage(diceP2, diceValue);
+    // Player 1 buttons
+    document.getElementById('roll1').addEventListener('click', () => rollDice(1));
+    document.getElementById('pass1').addEventListener('click', () => passTurn(1));
     
-    if (diceValue === 1) {
-        // Rolled a 1, lose turn automatically
-        setTimeout(() => {
-            alert('Oh no! You rolled a 1. Your turn is over!');
-            switchPlayer();
-        }, 300);
-    } else {
-        // Add to score
-        player2Score += diceValue;
-        updateScoreDisplays();
-        
-        // Check for winner
-        if (checkWinner()) {
-            return;
+    // Player 2 buttons
+    document.getElementById('roll2').addEventListener('click', () => rollDice(2));
+    document.getElementById('pass2').addEventListener('click', () => passTurn(2));
+    
+    // Restart buttons
+    document.getElementById('restart1Button').addEventListener('click', restartGame);
+    document.getElementById('restart2Button').addEventListener('click', restartGame);
+    
+    // How to Play popup buttons
+    document.getElementById('howToPlayButton').addEventListener('click', showHowToPlay);
+    document.getElementById('closeHowToPlay').addEventListener('click', closeHowToPlay);
+    
+    // Close popup when clicking outside
+    document.getElementById('howToPlayPopup').addEventListener('click', (e) => {
+        if (e.target.id === 'howToPlayPopup') {
+            closeHowToPlay();
         }
-    }
+    });
 });
-
-// Player 2 - Pass Turn
-passTurnP2.addEventListener('click', () => {
-    switchPlayer();
-});
-
-// Play Again
-playAgainButton.addEventListener('click', () => {
-    resetGame();
-});
-
-// ===== INITIALIZE GAME =====
-// Make sure only intro screen is visible on load
-hideAllScreens();
-showScreen(introScreen);

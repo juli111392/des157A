@@ -1,4 +1,3 @@
-/* ===== RESET & BASE STYLES ===== */
 * {
     margin: 0;
     padding: 0;
@@ -6,248 +5,468 @@
 }
 
 body {
-    font-family: 'Nunito', sans-serif;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-}
-
-/* ===== SCREEN LAYOUT ===== */
-.screen {
-    width: 100%;
-    height: 100%;
-    min-height: 600px;
+    font-family: 'Baloo 2', cursive;
+    background: #077DFF;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: fixed;
+    overflow: hidden;
+}
+
+.game-container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: #077DFF;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
     top: 0;
     left: 0;
 }
 
-.screen-content {
+.screen.active {
+    display: flex;
+}
+
+/* Start Screen */
+.start-screen {
+    background: #077DFF;
+    position: relative;
+}
+
+.start-content {
+    position: relative;
+    z-index: 2;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 30px;
+    justify-content: center;
+}
+
+.game-title {
+    font-size: 96px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+    margin-top: -50px;
+}
+
+.start-button {
+    font-family: 'Baloo 2', cursive;
+    font-size: 48px;
+    font-weight: 700;
+    color: #4a3428;
+    background: #FFB9FF;
+    border: none;
+    border-radius: 40px;
+    padding: 25px 100px;
+    cursor: pointer;
+    box-shadow: 0 8px 0 #C896C8;
+    transition: all 0.2s ease;
+    margin-top: 390px;
+}
+
+.start-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 11px 0 #C896C8;
+}
+
+.start-button:active {
+    transform: translateY(6px);
+    box-shadow: 0 2px 0 #C896C8;
+}
+
+/* How to Play Button */
+.how-to-play-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 15px 30px;
+    cursor: pointer;
+    transition: all 0.2s ease;
     z-index: 10;
-    text-align: center;
-    padding: 20px;
+}
+
+.how-to-play-button:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+/* Player Screen */
+.player-screen {
+    background: #077DFF;
+    position: relative;
+}
+
+.background-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.player-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 100%;
 }
 
-/* Special layout for intro screen */
-#intro-screen .screen-content {
-    justify-content: flex-start;
-    padding-top: 100px;
-    padding-bottom: 100px;
+/* Player Info - Both Players Side by Side */
+.players-info {
+    position: absolute;
+    top: 50px;
+    right: 90px;
+    display: flex;
+    gap: 30px;
+    z-index: 10;
 }
 
-#intro-screen .game-title {
-    margin-bottom: auto;
+.player-box {
+    text-align: center;
 }
 
-#intro-screen .game-button {
-    margin-top: auto;
-}
-
-/* ===== VISIBILITY TOGGLE ===== */
-.hidden {
-    display: none !important;
-}
-
-/* ===== BACKGROUND IMAGES ===== */
-#intro-screen {
-    background-image: url('images/intro.png');
-}
-
-#player1-screen {
-    background-image: url('images/player1.png');
-}
-
-#player2-screen {
-    background-image: url('images/player2.png');
-}
-
-#winner-screen {
-    background-image: url('images/winner.png');
-}
-
-/* ===== TYPOGRAPHY ===== */
-.game-title {
-    font-size: 64px;
-    font-weight: 800;
-    color: #fff;
-    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
-    margin-bottom: 20px;
-}
-
-.player-title {
-    font-size: 48px;
+.player-name {
+    font-size: 32px;
     font-weight: 700;
-    color: #fff;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    color: white;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
+    margin-bottom: 15px;
+    opacity: 0.5;
+}
+
+.player-name.active-player {
+    opacity: 1;
+}
+
+.score {
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px 30px;
+    border-radius: 20px;
+}
+
+.dice-container {
+    margin-bottom: 10px;
+    margin-top: 0px;
+}
+
+.dice {
+    width: 1000px;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+    transition: transform 0.1s ease;
+}
+
+.dice.rolling {
+    animation: diceRoll 0.1s ease-in-out infinite;
+}
+
+@keyframes diceRoll {
+    0%, 100% { transform: rotate(-10deg); }
+    50% { transform: rotate(10deg); }
+}
+
+.button-container {
+    display: flex;
+    gap: 30px;
+    position: absolute;
+    bottom: 80px;
+}
+
+.game-button {
+    font-family: 'Baloo 2', cursive;
+    font-size: 32px;
+    font-weight: 700;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 20px 60px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.roll-button {
+    background: #FFA040;
+    box-shadow: 0 6px 0 #D97B2D;
+}
+
+.roll-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #D97B2D;
+}
+
+.roll-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #D97B2D;
+}
+
+.pass-button {
+    background: #FFB9FF;
+    box-shadow: 0 6px 0 #C896C8;
+    color: #4a3428;
+}
+
+.pass-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #C896C8;
+}
+
+.pass-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #C896C8;
+}
+
+.game-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Winner Screen */
+.winner-screen {
+    background: #077DFF;
+    position: relative;
+}
+
+.winner-text {
+    position: absolute;
+    top: 40px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 72px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+    z-index: 20;
+    animation: bounce 0.6s ease infinite alternate;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+.winner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.winner-animation {
+    animation: winnerFlip 0.8s steps(1) infinite;
+}
+
+@keyframes winnerFlip {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+.winner-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.winner-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.winner-image:nth-child(2) {
+    animation: winnerFlip2 0.8s steps(1) infinite;
+}
+
+@keyframes winnerFlip2 {
+    0%, 49% { opacity: 0; }
+    50%, 100% { opacity: 1; }
+}
+
+.restart-button {
+    position: absolute;
+    bottom: 30px;
+    font-family: 'Baloo 2', cursive;
+    font-size: 32px;
+    font-weight: 700;
+    color: #4a3428;
+    background: #E8B4E8;
+    border: none;
+    border-radius: 25px;
+    padding: 20px 60px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #C896C8;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.restart-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 #C896C8;
+}
+
+.restart-button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #C896C8;
+}
+
+/* Popup Styles */
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-overlay.active {
+    display: flex !important;
+}
+
+.popup-content {
+    background: white;
+    border-radius: 30px;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    animation: popupAppear 0.3s ease;
+}
+
+@keyframes popupAppear {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.popup-close:hover {
+    background: #FF5252;
+    transform: scale(1.1);
+}
+
+.popup-title {
+    font-family: 'Baloo 2', cursive;
+    font-size: 42px;
+    font-weight: 700;
+    color: #077DFF;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.popup-text {
+    font-family: 'Baloo 2', cursive;
+    font-size: 18px;
+    color: #4a3428;
+    line-height: 1.6;
+}
+
+.popup-text p {
+    margin-bottom: 15px;
+}
+
+.popup-text ul {
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.popup-text li {
     margin-bottom: 10px;
 }
 
-.winner-title {
+.popup-text strong {
+    color: #077DFF;
+}
+
+/* No Sushi Popup */
+.no-sushi-popup {
+    background: #FFA040;
+    color: white;
+    text-align: center;
+    padding: 50px 60px;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.no-sushi-popup .popup-title {
+    color: white;
     font-size: 56px;
-    font-weight: 800;
-    color: #fff;
-    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.3);
 }
 
-/* ===== SCORE DISPLAY ===== */
-.score-display {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 15px 40px;
-    border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.score-label {
-    font-size: 28px;
+.popup-message {
+    font-family: 'Baloo 2', cursive;
+    font-size: 36px;
     font-weight: 700;
-    color: #333;
+    color: white;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
 }
 
-#player1-score,
-#player2-score {
-    color: #ff6b9d;
-    font-weight: 800;
-}
-
-/* ===== DICE CONTAINER ===== */
-.dice-container {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 150px;
-}
-
-.dice-image {
-    width: 120px;
-    height: 120px;
-    object-fit: contain;
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.25));
-}
-
-/* ===== BUTTONS ===== */
-.game-button {
-    font-family: 'Nunito', sans-serif;
+.popup-submessage {
+    font-family: 'Baloo 2', cursive;
     font-size: 24px;
-    font-weight: 700;
-    padding: 15px 50px;
-    border: none;
-    border-radius: 50px;
-    background: #ff6b9d;
-    color: #fff;
-    cursor: pointer;
-    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.4);
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.game-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.6);
-    background: #ff5a8c;
-}
-
-.game-button:active {
-    transform: translateY(0);
-    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.4);
-}
-
-.game-button.secondary {
-    background: #a8daff;
-    box-shadow: 0 6px 20px rgba(168, 218, 255, 0.4);
-}
-
-.game-button.secondary:hover {
-    box-shadow: 0 8px 25px rgba(168, 218, 255, 0.6);
-    background: #8dc9ff;
-}
-
-/* ===== BUTTON GROUP ===== */
-.button-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 768px) {
-    .game-title {
-        font-size: 48px;
-    }
-
-    .player-title {
-        font-size: 40px;
-    }
-
-    .winner-title {
-        font-size: 44px;
-    }
-
-    .game-button {
-        font-size: 20px;
-        padding: 12px 40px;
-    }
-
-    .score-label {
-        font-size: 24px;
-    }
-
-    .dice-image {
-        width: 100px;
-        height: 100px;
-    }
-    
-    #intro-screen .screen-content {
-        padding-top: 80px;
-        padding-bottom: 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    .game-title {
-        font-size: 40px;
-    }
-
-    .player-title {
-        font-size: 32px;
-    }
-
-    .winner-title {
-        font-size: 36px;
-    }
-
-    .game-button {
-        font-size: 16px;
-        padding: 10px 30px;
-    }
-
-    .score-label {
-        font-size: 20px;
-    }
-
-    .dice-image {
-        width: 80px;
-        height: 80px;
-    }
-    
-    #intro-screen .screen-content {
-        padding-top: 60px;
-        padding-bottom: 60px;
-    }
+    color: white;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.3);
 }
