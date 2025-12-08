@@ -10,6 +10,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Audio Files -->
+    <audio id="diceSound" preload="auto">
+        <source src="sounds/dice.mp4" type="audio/mp4">
+    </audio>
+    <audio id="winnerSound" preload="auto">
+        <source src="sounds/eating.mp4" type="audio/mp4">
+    </audio>
+
     <div class="game-container">
         <!-- Start Screen -->
         <div class="screen start-screen active" id="startScreen">
@@ -118,6 +126,10 @@
             <p class="popup-submessage">Other player's turn now!</p>
         </div>
     </div>
+
+    <footer>
+        <a href="sources.html">Sources</a>
+    </footer>
 
     <script src="script.js"></script>
 </body>

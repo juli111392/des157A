@@ -4,10 +4,6 @@ let player2Total = 0;
 let isRolling = false;
 const winningScore = 20;
 
-// Audio elements
-const diceSound = document.getElementById('diceSound');
-const winnerSound = document.getElementById('winnerSound');
-
 function startGame() {
     hideAllScreens();
     document.getElementById('player1Screen').classList.add('active');
@@ -39,10 +35,6 @@ function rollDice(player) {
     rollButton.disabled = true;
     passButton.disabled = true;
     diceElement.classList.add('rolling');
-
-    // Play dice sound
-    diceSound.currentTime = 0;
-    diceSound.play().catch(e => console.log('Audio play failed:', e));
 
     let rollCount = 0;
     const rollInterval = setInterval(() => {
@@ -136,10 +128,6 @@ function checkWinner() {
 function showWinner(player) {
     hideAllScreens();
     document.getElementById(`winner${player}Screen`).classList.add('active');
-    
-    // Play winner sound
-    winnerSound.currentTime = 0;
-    winnerSound.play().catch(e => console.log('Audio play failed:', e));
 }
 
 function restartGame() {
