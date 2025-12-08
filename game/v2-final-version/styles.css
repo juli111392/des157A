@@ -493,3 +493,130 @@ footer a {
 footer a:hover {
     background: rgba(0, 0, 0, 0.5);
 }
+
+/* Mobile Styles - 390x844px and smaller */
+@media (max-width: 844px) {
+    /* Use mobile background images */
+    .start-screen .background-image {
+        content: url('images/start-mobile.png');
+    }
+    
+    #player1Screen .background-image {
+        content: url('images/player-1-mobile.png');
+    }
+    
+    #player2Screen .background-image {
+        content: url('images/player-2-mobile.png');
+    }
+    
+    #winner1Screen .winner-image:first-child {
+        content: url('images/winner-1-1-mobile.png');
+    }
+    
+    #winner1Screen .winner-image:last-child {
+        content: url('images/winner-1-2-mobile.png');
+    }
+    
+    #winner2Screen .winner-image:first-child {
+        content: url('images/winner-2-1-mobile.png');
+    }
+    
+    #winner2Screen .winner-image:last-child {
+        content: url('images/winner-2-2-mobile.png');
+    }
+    
+    /* Adjust layout for mobile */
+    .game-title {
+        font-size: 56px;
+        margin-top: 5px;
+    }
+    
+    .start-button {
+        font-size: 32px;
+        padding: 20px 60px;
+        margin-top: 380px;
+    }
+    
+    .how-to-play-button {
+        font-size: 18px;
+        padding: 10px 20px;
+        top: 20px;
+        left: 20px;
+    }
+    
+    /* Player info - stack vertically on mobile */
+    .players-info {
+        flex-direction: column;
+        top: 20px;
+        right: 20px;
+        gap: 15px;
+    }
+    
+    .player-name {
+        font-size: 24px;
+    }
+    
+    .score {
+        font-size: 28px;
+        padding: 10px 20px;
+    }
+    
+    /* Smaller dice on mobile */
+    .dice-container {
+        margin-top: 150px;
+    }
+    
+    .dice {
+        width: 800px;
+    }
+    
+    /* Button adjustments */
+    .button-container {
+        bottom: 80px;
+        gap: 20px;
+    }
+    
+    .game-button {
+        font-size: 24px;
+        padding: 15px 40px;
+    }
+    
+    /* Winner text */
+    .winner-text {
+        font-size: 48px;
+        top: 30px;
+    }
+    
+    .restart-button {
+        font-size: 24px;
+        padding: 15px 40px;
+        bottom: 100px;
+    }
+    
+    /* Popup adjustments */
+    .popup-content {
+        padding: 30px;
+        max-width: 90%;
+    }
+    
+    .popup-title {
+        font-size: 32px;
+    }
+    
+    .popup-text {
+        font-size: 16px;
+    }
+    
+    .no-sushi-popup .popup-title {
+        font-size: 42px;
+    }
+    
+    .popup-message {
+        font-size: 28px;
+    }
+    
+    footer a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+}
