@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Ibarra Real Nova', serif;
+    color: #ffffff;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: url('images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+.miami-bg {
+    filter: brightness(0.7);
+}
+
+.hk-bg {
+    filter: brightness(0.6);
+}
+
+.london-bg {
+    filter: brightness(0.65);
+}
+
+header h1 {
+    font-family: 'Kapakana', cursive;
+    font-size: 4rem;
+    font-weight: 400;
+    text-align: center;
+    padding: 1.5rem 0 1rem 0;
+    letter-spacing: 2px;
+}
+
+.city-name {
+    font-family: 'Ibarra Real Nova', serif;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    text-align: center;
+}
+
+.restaurant-name {
+    font-size: 1.3rem;
+    text-align: center;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.location-pin {
+    width: 30px;
+    height: 30px;
+    background: #e63946;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    margin: 0 auto 1rem auto;
+    position: relative;
+}
+
+.location-pin::after {
+    content: '';
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.restaurant-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem;
+    height: calc(100vh - 200px);
+}
+
+.restaurant-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plate-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+}
+
+.plate-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.plate-image:hover {
+    transform: scale(1.05);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.detail-page {
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.detail-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 120px);
+    padding: 0 2rem;
+    gap: 3rem;
+    margin-top: -90px;
+}
+
+.nav-arrow {
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.3s ease;
+}
+
+.nav-arrow:hover {
+    transform: scale(1.1);
+}
+
+.nav-arrow img {
+    width: 50px;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+}
+
+.food-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.center-food {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.location-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.location-header .city-name {
+    font-size: 2rem;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.location-header .restaurant-name {
+    margin-bottom: 0;
+    text-align: left;
+    font-size: 1.1rem;
+}
+
+.detail-image-container {
+    width: 320px;
+    height: 320px;
+}
+
+.detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.utensil {
+    width: 60px;
+    height: auto;
+}
+
+.info-card-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card {
+    width: 400px;
+    height: 500px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flip-card-front {
+    background: rgba(244, 237, 217, 0.95);
+    color: #333;
+    border: 3px solid #d4af37;
+}
+
+.flip-card-front h3 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    font-family: 'Ibarra Real Nova', serif;
+    text-align: center;
+}
+
+.click-prompt {
+    font-size: 1.3rem;
+    opacity: 0.7;
+    text-align: center;
+}
+
+.flip-card-back {
+    background: rgba(244, 237, 217, 0.98);
+    color: #333;
+    transform: rotateY(180deg);
+    border: 3px solid #d4af37;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.flip-card-back h3 {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+    font-family: 'Ibarra Real Nova', serif;
+}
+
+.ratings {
+    width: 100%;
+    margin-bottom: 1.2rem;
+}
+
+.ratings p {
+    font-size: 1rem;
+    margin-bottom: 0.6rem;
+}
+
+.ratings strong {
+    color: #d4af37;
+}
+
+.description {
+    width: 100%;
+    line-height: 1.6;
+}
+
+.description p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 1200px) {
+    .restaurant-grid {
+        gap: 2rem;
+        padding: 2rem;
+    }
+    
+    .plate-container {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .city-name {
+        font-size: 2.5rem;
+    }
+    
+    .detail-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: calc(100vh - 120px);
+        padding: 0 2rem;
+        gap: 3rem;
+        margin-top: -200px;
+    }
+    
+    .utensil {
+        display: none;
+    }
+    
+    .flip-card {
+        width: 90%;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 3rem;
+    }
+    
+    .restaurant-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+    
+    .nav-arrow.left {
+        left: 1rem;
+    }
+    
+    .nav-arrow.right {
+        right: 1rem;
+    }
+    
+    .nav-arrow img {
+        width: 40px;
+    }
+}

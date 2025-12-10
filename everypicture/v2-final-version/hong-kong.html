@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hong Kong</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:wght@400;500;600&family=Kapakana&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body class="detail-page">
+    <div class="background hk-bg"></div>
+    
+    <header>
+        <h1>Favourite meals of 2025 so far...</h1>
+    </header>
+
+    <main class="detail-content">
+        <!-- Navigation and Food Section -->
+        <div class="food-section">
+            <!-- Left Arrow -->
+            <div class="nav-arrow left" id="leftArrow">
+                <img src="images/arrow-left.png" alt="Previous">
+            </div>
+            
+            <!-- Fork -->
+            <img src="images/fork.png" alt="Fork" class="utensil fork">
+            
+            <!-- Center: Location and Food -->
+            <div class="center-food">
+                <div class="location-header">
+                    <div class="location-pin"></div>
+                    <div>
+                        <h2 class="city-name">Hong Kong</h2>
+                        <p class="restaurant-name">德記海鮮</p>
+                    </div>
+                </div>
+                
+                <div class="detail-image-container">
+                    <img src="images/hk-spot-detail.png" alt="Hong Kong Detail" class="detail-image">
+                </div>
+            </div>
+            
+            <!-- Spoon -->
+            <img src="images/spoon.png" alt="Spoon" class="utensil spoon">
+            
+            <!-- Right Arrow -->
+            <div class="nav-arrow right" id="rightArrow">
+                <img src="images/arrow-right.png" alt="Next">
+            </div>
+        </div>
+
+        <!-- Right Side: Info Card with Flip -->
+        <div class="info-card-container">
+            <div class="flip-card" id="flipCard">
+                <div class="flip-card-inner">
+                    <!-- Front of card -->
+                    <div class="flip-card-front">
+                        <h3>Hong Kong</h3>
+                        <p class="click-prompt">Click to open me!</p>
+                    </div>
+                    
+                    <!-- Back of card -->
+                    <div class="flip-card-back">
+                        <h3>An unforgettable Hong Kong feast</h3>
+                        
+                        <div class="ratings">
+                            <p><strong>Comfort level:</strong> 10/10</p>
+                            <p><strong>Tastiness:</strong> 8/10</p>
+                        </div>
+                        
+                        <div class="description">
+                            <p>Nostalgia.</p>
+                            
+                            <p>This dish perfectly captures what Hong Kong cuisine is all about and exactly how I remembered. Bold flavors, perfect execution, and presentation that makes you pause before taking a bite.</p>
+                            
+                            <p>Coming here is always nostalgic to me because it's a spot me and my family always go to when we're all together, which gets harder and harder each year. So I always treasure coming here!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
