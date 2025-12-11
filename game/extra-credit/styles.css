@@ -48,10 +48,14 @@ main {
 
 .section {
     margin-bottom: 60px;
+    padding-bottom: 60px;
+    border-bottom: 2px solid #e0e0e0;
 }
 
 .section:last-child {
     margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
 }
 
 h2 {
@@ -61,6 +65,21 @@ h2 {
     margin-bottom: 25px;
     padding-bottom: 10px;
     border-bottom: 3px solid #077DFF;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #077DFF;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+h4 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #4a3428;
+    margin-bottom: 10px;
 }
 
 .design-comps {
@@ -87,6 +106,15 @@ h2 {
     display: block;
 }
 
+.image-caption {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+    padding: 10px;
+}
+
 .description p {
     font-size: 18px;
     line-height: 1.8;
@@ -95,30 +123,151 @@ h2 {
     text-align: justify;
 }
 
-footer {
-    text-align: center;
-    padding-top: 30px;
-    border-top: 2px solid #e0e0e0;
-    margin-top: 40px;
+/* Usability Testing Specific Styles */
+.usability-testing {
+    margin-top: 80px;
 }
 
-footer a {
-    display: inline-block;
+.subsection {
+    margin-bottom: 50px;
+}
+
+.subsection:last-child {
+    margin-bottom: 0;
+}
+
+.subsection p {
     font-size: 18px;
-    font-weight: 700;
-    color: #077DFF;
-    text-decoration: none;
-    padding: 12px 30px;
-    border: 2px solid #077DFF;
-    border-radius: 25px;
-    transition: all 0.3s ease;
+    line-height: 1.8;
+    color: #4a3428;
+    margin-bottom: 20px;
 }
 
-footer a:hover {
+.participants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.participant-card {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #077DFF;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.participant-card p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.participant-card strong {
+    color: #077DFF;
+}
+
+.finding {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border-left: 4px solid #077DFF;
+}
+
+.finding h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.finding ul {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+.finding li {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 12px;
+    color: #4a3428;
+}
+
+.finding strong {
+    color: #077DFF;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.metric-card {
     background: #077DFF;
     color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(7, 125, 255, 0.3);
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-5px);
+}
+
+.metric-card h4 {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.metric-value {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.metric-description {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+blockquote {
+    background: #fff3cd;
+    border-left: 4px solid #FFA040;
+    padding: 20px 25px;
+    margin: 20px 0;
+    font-style: italic;
+    font-size: 16px;
+    color: #4a3428;
+    border-radius: 8px;
+}
+
+ul {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+ul li {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #4a3428;
+}
+
+ol {
+    margin-left: 20px;
+    margin-top: 15px;
+}
+
+ol li {
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #4a3428;
 }
 
 @media (max-width: 768px) {
@@ -134,13 +283,28 @@ footer a:hover {
         font-size: 20px;
     }
 
+    h3 {
+        font-size: 18px;
+    }
+
     .subtitle {
         font-size: 16px;
     }
 
-    .description p {
+    .description p,
+    .subsection p,
+    ul li,
+    ol li {
         font-size: 16px;
-        text-align: left;
+    }
+
+    .participants-grid,
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-value {
+        font-size: 36px;
     }
 
     footer a {
