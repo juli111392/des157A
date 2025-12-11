@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Sushi Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Audio Files -->
+    <audio id="diceSound" preload="auto">
+        <source src="sounds/dice.mp4" type="audio/mp4">
+    </audio>
+    <audio id="winnerSound" preload="auto">
+        <source src="sounds/eating.mp4" type="audio/mp4">
+    </audio>
+
+    <div class="game-container">
+        <!-- Start Screen -->
+        <div class="screen start-screen active" id="startScreen">
+            <img src="images/start.png" alt="Start Screen" class="background-image">
+            <button class="how-to-play-button" id="howToPlayButton">HOW TO PLAY</button>
+            <div class="start-content">
+                <h1 class="game-title">Cat Sushi</h1>
+                <button class="start-button" id="startButton">START</button>
+            </div>
+        </div>
+
+        <!-- Player 1 Screen -->
+        <div class="screen player-screen" id="player1Screen">
+            <img src="images/player-1.png" alt="Player 1 Background" class="background-image">
+            <div class="player-content">
+                <div class="players-info">
+                    <div class="player-box">
+                        <div class="player-name active-player">PLAYER 1</div>
+                        <div class="score" id="player1ScoreDisplay">0</div>
+                    </div>
+                    <div class="player-box">
+                        <div class="player-name">PLAYER 2</div>
+                        <div class="score" id="player2ScoreDisplay1">0</div>
+                    </div>
+                </div>
+                <div class="dice-container">
+                    <img src="images/dice-1.png" alt="Dice" class="dice" id="dice1">
+                </div>
+                <div class="button-container">
+                    <button class="game-button roll-button" id="roll1">ROLL</button>
+                    <button class="game-button pass-button" id="pass1">PASS</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Player 2 Screen -->
+        <div class="screen player-screen" id="player2Screen">
+            <img src="images/player-2.png" alt="Player 2 Background" class="background-image">
+            <div class="player-content">
+                <div class="players-info">
+                    <div class="player-box">
+                        <div class="player-name">PLAYER 1</div>
+                        <div class="score" id="player1ScoreDisplay2">0</div>
+                    </div>
+                    <div class="player-box">
+                        <div class="player-name active-player">PLAYER 2</div>
+                        <div class="score" id="player2ScoreDisplay">0</div>
+                    </div>
+                </div>
+                <div class="dice-container">
+                    <img src="images/dice-1.png" alt="Dice" class="dice" id="dice2">
+                </div>
+                <div class="button-container">
+                    <button class="game-button roll-button" id="roll2">ROLL</button>
+                    <button class="game-button pass-button" id="pass2">PASS</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Winner Screen Player 1 -->
+        <div class="screen winner-screen" id="winner1Screen">
+            <h1 class="winner-text">PLAYER 1 WINS!</h1>
+            <div class="winner-container">
+                <img src="images/winner-1-1.png" alt="Winner Player 1" class="winner-image">
+                <img src="images/winner-1-2.png" alt="Winner Player 1" class="winner-image">
+            </div>
+            <button class="restart-button" id="restart1Button">PLAY AGAIN</button>
+        </div>
+
+        <!-- Winner Screen Player 2 -->
+        <div class="screen winner-screen" id="winner2Screen">
+            <h1 class="winner-text">PLAYER 2 WINS!</h1>
+            <div class="winner-container">
+                <img src="images/winner-2-1.png" alt="Winner Player 2" class="winner-image">
+                <img src="images/winner-2-2.png" alt="Winner Player 2" class="winner-image">
+            </div>
+            <button class="restart-button" id="restart2Button">PLAY AGAIN</button>
+        </div>
+    </div>
+
+    <!-- How to Play Popup -->
+    <div class="popup-overlay" id="howToPlayPopup">
+        <div class="popup-content">
+            <button class="popup-close" id="closeHowToPlay">✕</button>
+            <h2 class="popup-title">How to Play</h2>
+            <div class="popup-text">
+                <p><strong>Goal:</strong> Be the first player to reach 20 points!</p>
+                <p><strong>How it works:</strong></p>
+                <ul>
+                    <li>Roll the dice to collect sushi and earn points</li>
+                    <li>Each roll adds points directly to your score</li>
+                    <li>Click <strong>PASS</strong> to end your turn and let the other player go</li>
+                    <li><strong>BUT WAIT!</strong> If you roll a dice with NO sushi (blank), you lose ALL your points and it becomes the other player's turn</li>
+                    <li>Be strategic - keep rolling to get more points, or play it safe and pass!</li>
+                </ul>
+                <p>First player to reach 20 points wins! Good luck! 🍣</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- No Sushi Popup -->
+    <div class="popup-overlay" id="noSushiPopup">
+        <div class="popup-content no-sushi-popup">
+            <h2 class="popup-title">OH NO! 😱</h2>
+            <p class="popup-message">You got NO SUSHI!</p>
+            <p class="popup-submessage">Other player's turn now!</p>
+        </div>
+    </div>
+
+    <footer>
+        <a href="sources.html">Sources</a>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Sources - Cat Sushi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 2px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Baloo 2', cursive;
+            background: #077DFF;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 700px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px 60px;
+            border-radius: 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .sound-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .sound-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .sound-link {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        a {
+            color: #FFB9FF;
+            word-break: break-all;
+        }
+
+        a:hover {
+            color: #FFA040;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #FFB9FF;
+            color: #4a3428;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #FFA040;
+            color: #4a3428;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sound Sources</h1>
+
+        <h2>Audio Files Used</h2>
+
+        <div class="sound-item">
+            <div class="sound-name">Dice Rolling Sound</div>
+            <div class="sound-link">
+                <strong>Source:</strong> <a href="https://www.youtube.com/watch?v=dEHqgEjNsms" target="_blank">https://www.youtube.com/watch?v=dEHqgEjNsms</a>
+            </div>
+            <div class="sound-link">
+                <strong>Usage:</strong> Played when the dice is rolled
+            </div>
+        </div>
+
+        <div class="sound-item">
+            <div class="sound-name">Eating Sound Effect</div>
+            <div class="sound-link">
+                <strong>Source:</strong> <a href="https://www.youtube.com/watch?v=zGkL-yhBYlk" target="_blank">https://www.youtube.com/watch?v=zGkL-yhBYlk</a>
+            </div>
+            <div class="sound-link">
+                <strong>Usage:</strong> Played when a winner is announced
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Game</a>
+    </div>
+</body>
+</html>
