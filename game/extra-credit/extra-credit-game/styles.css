@@ -357,7 +357,7 @@ body {
 
 .sushi-collection {
     display: flex;
-    gap: -500px;
+    gap: 0px;
     align-items: center;
     justify-content: center;
 }
