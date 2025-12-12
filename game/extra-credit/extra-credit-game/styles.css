@@ -337,6 +337,54 @@ body {
     box-shadow: 0 2px 0 #C896C8;
 }
 
+/* Sushi Collection Styling */
+.sushi-collection-container {
+    position: absolute;
+    bottom: 210px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 25;
+    max-width: 90%;
+}
+
+.sushi-collection-title {
+    display: none;
+}
+
+.sushi-collection-scroll {
+    max-width: 1200px;
+}
+
+.sushi-collection {
+    display: flex;
+    gap: -500px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sushi-item {
+    width: 350px;
+    height: 350px;
+    object-fit: contain;
+    object-position: center;
+    flex-shrink: 0;
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0) rotate(-180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
 /* Popup Styles */
 .popup-overlay {
     display: none;
@@ -585,6 +633,16 @@ footer a:hover {
     .winner-text {
         font-size: 48px;
         top: 30px;
+    }
+    
+    /* Sushi collection on mobile */
+    .sushi-collection-container {
+        bottom: 180px;
+    }
+    
+    .sushi-item {
+        width: 80px;
+        height: 80px;
     }
     
     .restart-button {

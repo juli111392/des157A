@@ -17,17 +17,17 @@
         body {
             font-family: 'Baloo 2', cursive;
             background: #077DFF;
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            overflow: hidden;
+            padding: 20px;
         }
 
         .container {
-            max-width: 700px;
+            max-width: 800px;
             background: rgba(255, 255, 255, 0.1);
             padding: 50px 60px;
             border-radius: 20px;
@@ -35,31 +35,32 @@
 
         h1 {
             font-size: 42px;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             text-align: center;
         }
 
         h2 {
             font-size: 28px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            margin-top: 10px;
         }
 
         .sound-item {
             background: rgba(255, 255, 255, 0.1);
-            padding: 15px;
+            padding: 20px;
             border-radius: 15px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .sound-name {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         .sound-link {
             font-size: 16px;
-            margin-bottom: 3px;
+            margin-bottom: 5px;
         }
 
         a {
@@ -73,20 +74,44 @@
 
         .back-link {
             display: inline-block;
-            margin-top: 20px;
-            padding: 12px 25px;
+            margin-top: 30px;
+            padding: 15px 30px;
             background: #FFB9FF;
             color: #4a3428;
             text-decoration: none;
             border-radius: 15px;
             font-weight: 700;
+            font-size: 18px;
             transition: all 0.3s ease;
+            text-align: center;
         }
 
         .back-link:hover {
             background: #FFA040;
             color: #4a3428;
             transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 32px;
+            }
+
+            h2 {
+                font-size: 24px;
+            }
+
+            .sound-name {
+                font-size: 18px;
+            }
+
+            .sound-link {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -95,6 +120,16 @@
         <h1>Sound Sources</h1>
 
         <h2>Audio Files Used</h2>
+
+        <div class="sound-item">
+            <div class="sound-name">Background Music</div>
+            <div class="sound-link">
+                <strong>Source:</strong> <a href="https://www.youtube.com/watch?v=siGSwQF6d8g" target="_blank">https://www.youtube.com/watch?v=siGSwQF6d8g</a>
+            </div>
+            <div class="sound-link">
+                <strong>Usage:</strong> Loops continuously throughout the entire game
+            </div>
+        </div>
 
         <div class="sound-item">
             <div class="sound-name">Dice Rolling Sound</div>

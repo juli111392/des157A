@@ -7,20 +7,41 @@
     let player1Total = 0;
     let player2Total = 0;
     let isRolling = false;
-    const winningScore = 20;
+    const winningScore = 10;
+
+    // NEW: Arrays to store sushi collection for each player
+    let player1SushiCollection = [];
+    let player2SushiCollection = [];
 
     // Audio elements
+    const bgMusic = document.getElementById('bgMusic');
     const diceSound = document.getElementById('diceSound');
     const winnerSound = document.getElementById('winnerSound');
 
+    // Start background music immediately when page loads
+    bgMusic.play().catch(e => {
+        // If autoplay is blocked, play on first user interaction
+        console.log('Autoplay blocked, will start on first interaction:', e);
+        document.addEventListener('click', function startMusicOnClick() {
+            bgMusic.play();
+            document.removeEventListener('click', startMusicOnClick);
+        }, { once: true });
+    });
+
     // Start a new game
     function startGame() {
+        
         hideAllScreens();
         document.getElementById('player1Screen').classList.add('active');
         currentPlayer = 1;
         player1Total = 0;
         player2Total = 0;
         isRolling = false;
+        
+        // Reset sushi collections
+        player1SushiCollection = [];
+        player2SushiCollection = [];
+        
         updateScores();
         
         // Enable Player 1 buttons
@@ -63,6 +84,17 @@
                 const finalRoll = Math.floor(Math.random() * 6) + 1;
                 diceElement.src = `images/dice-${finalRoll}.png`;
                 diceElement.classList.remove('rolling');
+                
+                // Store the rolled sushi in the player's collection
+                if (currentPlayer === 1) {
+                    player1SushiCollection.push(finalRoll);
+                } else {
+                    player2SushiCollection.push(finalRoll);
+                }
+                
+                console.log(`Player ${currentPlayer} rolled: ${finalRoll}`);
+                console.log(`Player 1 collection:`, player1SushiCollection);
+                console.log(`Player 2 collection:`, player2SushiCollection);
                 
                 if (finalRoll === 1) {
                     // Rolled a 1 - lose all points and pass to next player
@@ -143,10 +175,36 @@
         return false;
     }
 
+    // NEW: Display sushi collection on winner screen
+    function displaySushiCollection(player) {
+        const collectionDiv = document.getElementById(`player${player}SushiCollection`);
+        collectionDiv.innerHTML = ''; // Clear previous content
+        
+        const sushiArray = player === 1 ? player1SushiCollection : player2SushiCollection;
+        
+        console.log(`Displaying collection for Player ${player}:`, sushiArray);
+        
+        // Create and add each sushi image
+        sushiArray.forEach((sushiNum, index) => {
+            const sushiImg = document.createElement('img');
+            sushiImg.src = `images/${sushiNum}.png`;
+            sushiImg.alt = `Sushi ${sushiNum}`;
+            sushiImg.className = 'sushi-item';
+            
+            // Add slight delay for staggered animation effect
+            setTimeout(() => {
+                collectionDiv.appendChild(sushiImg);
+            }, index * 50);
+        });
+    }
+
     // Show winner screen
     function showWinner(player) {
         hideAllScreens();
         document.getElementById(`winner${player}Screen`).classList.add('active');
+        
+        // Display the winner's sushi collection
+        displaySushiCollection(player);
         
         // Play winner sound
         winnerSound.currentTime = 0;
@@ -155,12 +213,21 @@
 
     // Restart the game
     function restartGame() {
+        // Restart background music from the beginning
+        bgMusic.currentTime = 0;
+        bgMusic.play().catch(e => console.log('Music play failed:', e));
+        
         hideAllScreens();
         document.getElementById('startScreen').classList.add('active');
         player1Total = 0;
         player2Total = 0;
         currentPlayer = 1;
         isRolling = false;
+        
+        // Reset sushi collections
+        player1SushiCollection = [];
+        player2SushiCollection = [];
+        
         updateScores();
     }
 

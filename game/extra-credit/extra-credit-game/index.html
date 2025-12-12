@@ -11,6 +11,9 @@
 </head>
 <body>
     <!-- Audio Files -->
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="sounds/bg.mp4" type="audio/mp4">
+    </audio>
     <audio id="diceSound" preload="auto">
         <source src="sounds/dice.mp4" type="audio/mp4">
     </audio>
@@ -44,7 +47,7 @@
                     </div>
                 </div>
                 <div class="dice-container">
-                    <img src="images/dice-1.png" alt="Dice" class="dice" id="dice1">
+                    <img src="images/dice-3.png" alt="Dice" class="dice" id="dice1">
                 </div>
                 <div class="button-container">
                     <button class="game-button roll-button" id="roll1">ROLL</button>
@@ -68,7 +71,7 @@
                     </div>
                 </div>
                 <div class="dice-container">
-                    <img src="images/dice-1.png" alt="Dice" class="dice" id="dice2">
+                    <img src="images/dice-3.png" alt="Dice" class="dice" id="dice2">
                 </div>
                 <div class="button-container">
                     <button class="game-button roll-button" id="roll2">ROLL</button>
@@ -84,6 +87,12 @@
                 <img src="images/winner-1-1.png" alt="Winner Player 1" class="winner-image">
                 <img src="images/winner-1-2.png" alt="Winner Player 1" class="winner-image">
             </div>
+            <!-- Sushi Collection Display -->
+            <div class="sushi-collection-container">
+                <div class="sushi-collection-scroll">
+                    <div class="sushi-collection" id="player1SushiCollection"></div>
+                </div>
+            </div>
             <button class="restart-button" id="restart1Button">PLAY AGAIN</button>
         </div>
 
@@ -93,6 +102,12 @@
             <div class="winner-container">
                 <img src="images/winner-2-1.png" alt="Winner Player 2" class="winner-image">
                 <img src="images/winner-2-2.png" alt="Winner Player 2" class="winner-image">
+            </div>
+            <!-- Sushi Collection Display -->
+            <div class="sushi-collection-container">
+                <div class="sushi-collection-scroll">
+                    <div class="sushi-collection" id="player2SushiCollection"></div>
+                </div>
             </div>
             <button class="restart-button" id="restart2Button">PLAY AGAIN</button>
         </div>
@@ -104,16 +119,18 @@
             <button class="popup-close" id="closeHowToPlay">✕</button>
             <h2 class="popup-title">How to Play</h2>
             <div class="popup-text">
-                <p><strong>Goal:</strong> Be the first player to reach 20 points!</p>
+                <p><strong>Goal:</strong> Be the first player to reach 20 points and collect yummy sushi!</p>
                 <p><strong>How it works:</strong></p>
                 <ul>
                     <li>Roll the dice to collect sushi and earn points</li>
                     <li>Each roll adds points directly to your score</li>
-                    <li>Click <strong>PASS</strong> to end your turn and let the other player go</li>
-                    <li><strong>BUT WAIT!</strong> If you roll a dice with NO sushi (blank), you lose ALL your points and it becomes the other player's turn</li>
-                    <li>Be strategic - keep rolling to get more points, or play it safe and pass!</li>
+                    <li>Click <strong>PASS</strong> to end your turn and save your sushi haul</li>
+                    <li><strong>GOLD SUSHI!</strong> Roll a 6 to get the legendary golden sushi - the most valuable catch!</li>
+                    <li><strong>OH NO!</strong> Roll a 1 and you'll hit the spicy wasabi bomb! You'll lose ALL your points and your turn ends!</li>
+                    <li>Be strategic - keep rolling to collect more sushi, or play it safe and pass!</li>
                 </ul>
-                <p>First player to reach 20 points wins! Good luck! 🍣</p>
+                <p><strong>At the end:</strong> See all the sushi you collected on your journey to victory!</p>
+                <p>First player to reach 20 points wins! Good luck, sushi chef!</p>
             </div>
         </div>
     </div>
@@ -121,7 +138,8 @@
     <!-- No Sushi Popup -->
     <div class="popup-overlay" id="noSushiPopup">
         <div class="popup-content no-sushi-popup">
-            <h2 class="popup-title">OH NO! 😱</h2>
+            <img src="images/crying-1.png" alt="Crying Cat" class="crying-cat" id="cryingCat">
+            <h2 class="popup-title">OH NO!</h2>
             <p class="popup-message">You got NO SUSHI!</p>
             <p class="popup-submessage">Other player's turn now!</p>
         </div>
