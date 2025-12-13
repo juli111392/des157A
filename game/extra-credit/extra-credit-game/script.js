@@ -7,7 +7,7 @@
     let player1Total = 0;
     let player2Total = 0;
     let isRolling = false;
-    const winningScore = 50;
+    const winningScore = 20;
 
     // NEW: Arrays to store sushi collection for each player
     let player1SushiCollection = [];
